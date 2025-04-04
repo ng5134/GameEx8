@@ -2,13 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/tR3"
+        android:id="@+id/randomText1"
         android:layout_width="103dp"
         android:layout_height="33dp"
         android:layout_marginStart="15dp"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/r12"
+        android:id="@+id/randomText2"
         android:layout_width="103dp"
         android:layout_height="33dp"
         android:layout_marginStart="15dp"
@@ -27,10 +27,10 @@
         android:text="TextView"
         android:textSize="25dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tR3" />
+        app:layout_constraintTop_toBottomOf="@+id/randomText1" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/firstInput"
         android:layout_width="103dp"
         android:layout_height="60dp"
         android:layout_marginStart="15dp"
@@ -38,33 +38,33 @@
         android:ems="10"
         android:inputType="numberSigned"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/r12" />
+        app:layout_constraintTop_toBottomOf="@+id/randomText2" />
 
     <Button
-        android:id="@+id/bt11"
+        android:id="@+id/firstCheckButton"
         android:layout_width="103dp"
         android:layout_height="54dp"
         android:layout_marginTop="70dp"
         android:layout_marginBottom="120dp"
-        android:onClick="check"
+        android:onClick="checkFirst"
         android:text="check"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/firstImage"
         tools:layout_editor_absoluteX="16dp" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/firstImage"
         android:layout_width="103dp"
         android:layout_height="111dp"
         android:visibility="invisible"
         android:layout_marginStart="15dp"
         android:layout_marginTop="80dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText1"
+        app:layout_constraintTop_toBottomOf="@+id/firstInput"
         app:srcCompat="@drawable/ve" />
 
     <TextView
-        android:id="@+id/textViewAnswer"
+        android:id="@+id/answerText1"
         android:layout_width="103dp"
         android:layout_height="33dp"
         android:layout_marginStart="25dp"
@@ -72,11 +72,11 @@
         android:visibility="invisible"
         android:text="TextView"
         android:textSize="25dp"
-        app:layout_constraintStart_toEndOf="@+id/tR3"
+        app:layout_constraintStart_toEndOf="@+id/randomText1"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tVr2"
+        android:id="@+id/answerText2"
         android:layout_width="103dp"
         android:layout_height="33dp"
         android:layout_marginStart="25dp"
@@ -84,11 +84,11 @@
         android:visibility="invisible"
         android:text="TextView"
         android:textSize="25dp"
-        app:layout_constraintStart_toEndOf="@+id/r12"
-        app:layout_constraintTop_toBottomOf="@+id/textViewAnswer" />
+        app:layout_constraintStart_toEndOf="@+id/randomText2"
+        app:layout_constraintTop_toBottomOf="@+id/answerText1" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/secondInput"
         android:layout_width="103dp"
         android:layout_height="60dp"
         android:layout_marginStart="25dp"
@@ -96,36 +96,36 @@
         android:ems="10"
         android:visibility="invisible"
         android:inputType="numberSigned"
-        app:layout_constraintStart_toEndOf="@+id/editText1"
-        app:layout_constraintTop_toBottomOf="@+id/tVr2" />
+        app:layout_constraintStart_toEndOf="@+id/firstInput"
+        app:layout_constraintTop_toBottomOf="@+id/answerText2" />
 
     <Button
-        android:id="@+id/bt22"
+        android:id="@+id/secondCheckButton"
         android:layout_width="103dp"
         android:layout_height="54dp"
         android:layout_marginStart="25dp"
         android:layout_marginTop="70dp"
         android:visibility="invisible"
         android:layout_marginBottom="120dp"
-        android:onClick="check2"
+        android:onClick="checkSecond"
         android:text="check"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/bt11"
-        app:layout_constraintTop_toBottomOf="@+id/imageV22" />
+        app:layout_constraintStart_toEndOf="@+id/firstCheckButton"
+        app:layout_constraintTop_toBottomOf="@+id/secondImage" />
 
     <ImageView
-        android:id="@+id/imageV22"
+        android:id="@+id/secondImage"
         android:layout_width="103dp"
         android:layout_height="111dp"
         android:visibility="invisible"
         android:layout_marginStart="25dp"
         android:layout_marginTop="80dp"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/editText2"
+        app:layout_constraintStart_toEndOf="@+id/firstImage"
+        app:layout_constraintTop_toBottomOf="@+id/secondInput"
         app:srcCompat="@drawable/ve" />
 
     <TextView
-        android:id="@+id/textViewAnswer3"
+        android:id="@+id/answerText3"
         android:layout_width="103dp"
         android:layout_height="33dp"
         android:layout_marginStart="25dp"
@@ -135,11 +135,11 @@
         android:textSize="25dp"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textViewAnswer"
+        app:layout_constraintStart_toEndOf="@+id/answerText1"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textRandom3"
+        android:id="@+id/randomText3"
         android:layout_width="103dp"
         android:layout_height="33dp"
         android:layout_marginStart="25dp"
@@ -149,11 +149,11 @@
         android:textSize="25dp"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tVr2"
-        app:layout_constraintTop_toBottomOf="@+id/textViewAnswer3" />
+        app:layout_constraintStart_toEndOf="@+id/answerText2"
+        app:layout_constraintTop_toBottomOf="@+id/answerText3" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/thirdInput"
         android:layout_width="103dp"
         android:layout_height="60dp"
         android:layout_marginStart="25dp"
@@ -163,11 +163,11 @@
         android:visibility="invisible"
         android:inputType="numberSigned"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editText2"
-        app:layout_constraintTop_toBottomOf="@+id/textRandom3" />
+        app:layout_constraintStart_toEndOf="@+id/secondInput"
+        app:layout_constraintTop_toBottomOf="@+id/randomText3" />
 
     <ImageView
-        android:id="@+id/imageView_3"
+        android:id="@+id/thirdImage"
         android:layout_width="103dp"
         android:layout_height="111dp"
         android:layout_marginStart="25dp"
@@ -175,28 +175,28 @@
         android:visibility="invisible"
         android:layout_marginEnd="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageV22"
-        app:layout_constraintTop_toBottomOf="@+id/editText3"
+        app:layout_constraintStart_toEndOf="@+id/secondImage"
+        app:layout_constraintTop_toBottomOf="@+id/thirdInput"
         app:srcCompat="@drawable/ve" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/thirdCheckButton"
         android:layout_width="103dp"
         android:layout_height="54dp"
         android:layout_marginStart="25dp"
         android:layout_marginTop="70dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="120dp"
-        android:onClick="check3"
+        android:onClick="checkThird"
         android:text="check"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/bt22"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_3" />
+        app:layout_constraintStart_toEndOf="@+id/secondCheckButton"
+        app:layout_constraintTop_toBottomOf="@+id/thirdImage" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/resetButton"
         android:layout_width="130dp"
         android:layout_height="50dp"
         android:layout_marginStart="50dp"
@@ -209,7 +209,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.447"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bt22" />
-
+        app:layout_constraintTop_toBottomOf="@+id/secondCheckButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
