@@ -23,61 +23,55 @@ public class MainActivity extends AppCompatActivity {
     EditText firstInput;
     EditText secondInput;
     EditText thirdInput;
-    int num1;
-    int num2;
-    int num3;
-    int num4;
-    int num5;
-    ImageView firstImage;
-    ImageView secondImage;
-    ImageView thirdImage;
-    Random randomGen = new Random();
-    int winCount;
     Button firstCheckButton;
     Button secondCheckButton;
     Button thirdCheckButton;
     Button resetButton;
+    ImageView firstImage;
+    ImageView secondImage;
+    ImageView thirdImage;
 
-    @SuppressLint("MissingInflatedId")
+    int num1, num2, num3, num4, winCount = 0;
+    Random randomGen = new Random();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         randomText1 = findViewById(R.id.randomText1);
         randomText2 = findViewById(R.id.randomText2);
-        firstInput = findViewById(R.id.firstInput);
-        firstImage = findViewById(R.id.firstImage);
         answerText1 = findViewById(R.id.answerText1);
         answerText2 = findViewById(R.id.answerText2);
-        secondImage = findViewById(R.id.secondImage);
-        secondInput = findViewById(R.id.secondInput);
-        firstCheckButton = findViewById(R.id.firstCheckButton);
-        secondCheckButton = findViewById(R.id.secondCheckButton);
-        resetButton = findViewById(R.id.resetButton);
         answerText3 = findViewById(R.id.answerText3);
         randomText3 = findViewById(R.id.randomText3);
-        thirdCheckButton = findViewById(R.id.thirdCheckButton);
+        firstInput = findViewById(R.id.firstInput);
+        secondInput = findViewById(R.id.secondInput);
         thirdInput = findViewById(R.id.thirdInput);
+        firstCheckButton = findViewById(R.id.firstCheckButton);
+        secondCheckButton = findViewById(R.id.secondCheckButton);
+        thirdCheckButton = findViewById(R.id.thirdCheckButton);
+        resetButton = findViewById(R.id.resetButton);
+        firstImage = findViewById(R.id.firstImage);
+        secondImage = findViewById(R.id.secondImage);
         thirdImage = findViewById(R.id.thirdImage);
 
         num1 = randomGen.nextInt(89) + 10;
-        randomText1.setText(String.valueOf(num1));
-
         num2 = randomGen.nextInt(89) + 10;
+        randomText1.setText(String.valueOf(num1));
         randomText2.setText(String.valueOf(num2));
-
-        winCount = 0;
     }
 
     public void checkFirst(View view) {
         String input = firstInput.getText().toString();
         if (!(input.equals(""))) {
             if (num1 + num2 == Integer.valueOf(input)) {
+                firstImage.setImageResource(R.drawable.ve); // תמונת וי
                 firstImage.setVisibility(View.VISIBLE);
                 winCount++;
                 answerText2.setText(String.valueOf(winCount));
             } else {
-                firstImage.setImageResource(R.drawable.ex);
+                firstImage.setImageResource(R.drawable.ex); // תמונת איקס
                 firstImage.setVisibility(View.VISIBLE);
             }
             firstInput.setEnabled(false);
@@ -97,10 +91,11 @@ public class MainActivity extends AppCompatActivity {
         String input = secondInput.getText().toString();
         if (!(input.equals(""))) {
             if ((num1 + num2) + num3 == Integer.valueOf(input)) {
+                secondImage.setImageResource(R.drawable.ve); // תמונת וי
                 secondImage.setVisibility(View.VISIBLE);
                 winCount++;
             } else {
-                secondImage.setImageResource(R.drawable.ex);
+                secondImage.setImageResource(R.drawable.ex); // תמונת איקס
                 secondImage.setVisibility(View.VISIBLE);
             }
             secondInput.setEnabled(false);
@@ -120,10 +115,11 @@ public class MainActivity extends AppCompatActivity {
         String input = thirdInput.getText().toString();
         if (!(input.equals(""))) {
             if ((num1 + num2 + num3) + num4 == Integer.valueOf(input)) {
+                thirdImage.setImageResource(R.drawable.ve); // תמונת וי
                 thirdImage.setVisibility(View.VISIBLE);
                 winCount++;
             } else {
-                thirdImage.setImageResource(R.drawable.ex);
+                thirdImage.setImageResource(R.drawable.ex); // תמונת איקס
                 thirdImage.setVisibility(View.VISIBLE);
             }
             thirdInput.setEnabled(false);
