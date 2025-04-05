@@ -1,5 +1,5 @@
 package com.example.gameex8;
-
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,157 +13,134 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
+    TextView textRandom1, textRandom2, textViewAnswer1, textViewAnswer2, textViewAnswer3, textViewAnswer4;
+    EditText editText1, editText2, editText3;
+    int number1, number2, number3, number4, numberOfWins;
+    ImageView imageView1, imageView2, imageView3;
+    Random ra = new Random();
+    Button buttonCheck1, buttonCheck2, buttonCheck3, buttonNewGame;
 
-    // משתנים
-    TextView randomText1, randomText2, randomText3, answerText1, answerText2, answerText3;
-    EditText firstInput, secondInput, thirdInput;
-    Button firstCheckButton, secondCheckButton, thirdCheckButton, resetButton;
-    ImageView firstImage, secondImage, thirdImage;
-    int num1, num2, num3, num4, winCount = 0;
-    Random randomGen = new Random();
-
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // אתחול של אובייקטים מה-XML
-        randomText1 = findViewById(R.id.randomText1);
-        randomText2 = findViewById(R.id.randomText2);
-        randomText3 = findViewById(R.id.randomText3);
-        answerText1 = findViewById(R.id.answerText1);
-        answerText2 = findViewById(R.id.answerText2);
-        answerText3 = findViewById(R.id.answerText3);
-        firstInput = findViewById(R.id.firstInput);
-        secondInput = findViewById(R.id.secondInput);
-        thirdInput = findViewById(R.id.thirdInput);
-        firstCheckButton = findViewById(R.id.firstCheckButton);
-        secondCheckButton = findViewById(R.id.secondCheckButton);
-        thirdCheckButton = findViewById(R.id.thirdCheckButton);
-        resetButton = findViewById(R.id.resetButton);
-        firstImage = findViewById(R.id.firstImage);
-        secondImage = findViewById(R.id.secondImage);
-        thirdImage = findViewById(R.id.thirdImage);
+        textRandom1 = findViewById(R.id.textRandom1);
+        textRandom2 = findViewById(R.id.textRandom2);
+        editText1 = findViewById(R.id.editText1);
+        imageView1 = findViewById(R.id.imageView1);
+        textViewAnswer1 = findViewById(R.id.textViewAnswer1);
+        textViewAnswer2 = findViewById(R.id.textViewAnswer2);
+        imageView2 = findViewById(R.id.imageView2);
+        editText2 = findViewById(R.id.editText2);
+        buttonCheck1 = findViewById(R.id.buttonCheck1);
+        buttonCheck2 = findViewById(R.id.buttonCheck2);
+        buttonNewGame = findViewById(R.id.buttonNewGame);
+        textViewAnswer3 = findViewById(R.id.textViewAnswer3);
+        textViewAnswer4 = findViewById(R.id.textViewAnswer4);
+        buttonCheck3 = findViewById(R.id.buttonCheck3);
+        editText3 = findViewById(R.id.editText3);
+        imageView3 = findViewById(R.id.imageView3);
 
-        // הגדרת מספרים והצגתם
-        num1 = randomGen.nextInt(89) + 10;
-        num2 = randomGen.nextInt(89) + 10;
-        randomText1.setText(String.valueOf(num1));
-        randomText2.setText(String.valueOf(num2));
+        number1 = ra.nextInt(89) + 10;
+        textRandom1.setText(String.valueOf(number1));
+
+        number2 = ra.nextInt(89) + 10;
+        textRandom2.setText(String.valueOf(number2));
+
+        numberOfWins = 0;
     }
 
-    // פונקציה לבדוק את השלב הראשון
-    public void checkFirst(View view) {
-        String input = firstInput.getText().toString();
-        if (!input.equals("")) {
-            if (num1 + num2 == Integer.parseInt(input)) {
-                firstImage.setImageResource(R.drawable.ve); // וי
-                firstImage.setVisibility(View.VISIBLE);
-                winCount++;
-                answerText2.setText(String.valueOf(winCount));
+    public void check1(View view) {
+        String text1 = editText1.getText().toString();
+        if (!text1.equals("")) {
+            if (number1 + number2 == Integer.valueOf(text1)) {
+                imageView1.setVisibility(View.VISIBLE);
+                numberOfWins++;
+                textViewAnswer2.setText(String.valueOf(numberOfWins));
             } else {
-                firstImage.setImageResource(R.drawable.ex); // איקס
-                firstImage.setVisibility(View.VISIBLE);
+                imageView1.setImageResource(R.drawable.ex);
+                imageView1.setVisibility(View.VISIBLE);
             }
-            firstInput.setEnabled(false);
-            firstCheckButton.setEnabled(false);
+            editText1.setEnabled(false);
+            buttonCheck1.setEnabled(false);
+            textViewAnswer1.setText(String.valueOf(number1 + number2));
+            number3 = ra.nextInt(89) + 10;
+            textViewAnswer2.setText(String.valueOf(number3));
 
-            // מעבר לשלב הבא
-            answerText1.setText(String.valueOf(num1 + num2));
-            num3 = randomGen.nextInt(89) + 10;
-            randomText3.setText(String.valueOf(num3));
-
-            // הצגת שדה הקלט של השלב הבא
-            answerText1.setVisibility(View.VISIBLE);
-            randomText3.setVisibility(View.VISIBLE);
-            secondInput.setVisibility(View.VISIBLE);
-            secondCheckButton.setVisibility(View.VISIBLE);
+            textViewAnswer1.setVisibility(View.VISIBLE);
+            textViewAnswer2.setVisibility(View.VISIBLE);
+            editText2.setVisibility(View.VISIBLE);
+            buttonCheck2.setVisibility(View.VISIBLE);
         }
     }
 
-    // פונקציה לבדוק את השלב השני
-    public void checkSecond(View view) {
-        String input = secondInput.getText().toString();
-        if (!input.equals("")) {
-            if ((num1 + num2) + num3 == Integer.parseInt(input)) {
-                secondImage.setImageResource(R.drawable.ve); // וי
-                secondImage.setVisibility(View.VISIBLE);
-                winCount++;
+    public void check2(View view) {
+        String text1 = editText2.getText().toString();
+        if (!text1.equals("")) {
+            if ((number1 + number2) + number3 == Integer.valueOf(text1)) {
+                imageView2.setVisibility(View.VISIBLE);
+                numberOfWins++;
             } else {
-                secondImage.setImageResource(R.drawable.ex); // איקס
-                secondImage.setVisibility(View.VISIBLE);
+                imageView2.setImageResource(R.drawable.ex);
+                imageView2.setVisibility(View.VISIBLE);
             }
-            secondInput.setEnabled(false);
-            secondCheckButton.setEnabled(false);
-            answerText3.setText(String.valueOf((num1 + num2) + num3));
-            num4 = randomGen.nextInt(89) + 10;
-            randomText2.setText(String.valueOf(num4));
+            editText2.setEnabled(false);
+            buttonCheck2.setEnabled(false);
+            textViewAnswer3.setText(String.valueOf((number1 + number2) + number3));
+            number4 = ra.nextInt(89) + 10;
+            textViewAnswer4.setText(String.valueOf(number4));
 
-            // הצגת שדה הקלט של השלב הבא
-            thirdCheckButton.setVisibility(View.VISIBLE);
-            thirdInput.setVisibility(View.VISIBLE);
-            randomText2.setVisibility(View.VISIBLE);
-            answerText3.setVisibility(View.VISIBLE);
+            buttonCheck3.setVisibility(View.VISIBLE);
+            editText3.setVisibility(View.VISIBLE);
+            textViewAnswer4.setVisibility(View.VISIBLE);
+            textViewAnswer3.setVisibility(View.VISIBLE);
         }
     }
 
-    // פונקציה לבדוק את השלב השלישי
-    public void checkThird(View view) {
-        String input = thirdInput.getText().toString();
-        if (!input.equals("")) {
-            if ((num1 + num2 + num3) + num4 == Integer.parseInt(input)) {
-                thirdImage.setImageResource(R.drawable.ve); // וי
-                thirdImage.setVisibility(View.VISIBLE);
-                winCount++;
+    public void check3(View view) {
+        String text1 = editText3.getText().toString();
+        if (!text1.equals("")) {
+            if ((number1 + number2 + number3) + number4 == Integer.valueOf(text1)) {
+                imageView3.setVisibility(View.VISIBLE);
+                numberOfWins++;
             } else {
-                thirdImage.setImageResource(R.drawable.ex); // איקס
-                thirdImage.setVisibility(View.VISIBLE);
+                imageView3.setImageResource(R.drawable.ex);
+                imageView3.setVisibility(View.VISIBLE);
             }
-            thirdInput.setEnabled(false);
-            thirdCheckButton.setEnabled(false);
-
-            // סיכום התוצאה
-            resetButton.setText(String.format("%d/3 (%.2f%%)", winCount, (winCount / 3.0) * 100));
+            editText3.setEnabled(false);
+            buttonCheck3.setEnabled(false);
+            buttonNewGame.setText(String.format("%d/3 (%.2f%%)", numberOfWins, (numberOfWins / 3.0) * 100));
         }
     }
 
-    // פונקציה לאתחול המשחק מחדש
-    public void restart(View view) {
-        num1 = randomGen.nextInt(89) + 10;
-        num2 = randomGen.nextInt(89) + 10;
-        num3 = randomGen.nextInt(89) + 10;
-        num4 = randomGen.nextInt(89) + 10;
+    public void restartGame(View view) {
+        number1 = ra.nextInt(89) + 10;
+        number2 = ra.nextInt(89) + 10;
+        number3 = ra.nextInt(89) + 10;
+        number4 = ra.nextInt(89) + 10;
 
-        winCount = 0;
+        numberOfWins = 0;
 
-        randomText1.setText(String.valueOf(num1));
-        randomText2.setText(String.valueOf(num2));
-        randomText2.setText("");
-        randomText3.setText("");
-        answerText1.setText("");
-        answerText3.setText("");
+        textRandom1.setText(String.valueOf(number1));
+        textRandom2.setText(String.valueOf(number2));
+        textViewAnswer2.setText("");
+        textViewAnswer4.setText("");
+        textViewAnswer1.setText("");
+        textViewAnswer3.setText("");
+        editText1.setText("");
+        editText2.setText("");
+        editText3.setText("");
 
-        firstInput.setText("");
-        secondInput.setText("");
-        thirdInput.setText("");
+        imageView1.setVisibility(View.INVISIBLE);
+        imageView2.setVisibility(View.INVISIBLE);
+        imageView3.setVisibility(View.INVISIBLE);
 
-        firstInput.setEnabled(true);
-        secondInput.setEnabled(true);
-        thirdInput.setEnabled(true);
-
-        firstCheckButton.setEnabled(true);
-        secondCheckButton.setEnabled(true);
-        thirdCheckButton.setEnabled(true);
-        resetButton.setText("new");
-
-        firstImage.setVisibility(View.INVISIBLE);
-        secondImage.setVisibility(View.INVISIBLE);
-        thirdImage.setVisibility(View.INVISIBLE);
-
-        secondCheckButton.setVisibility(View.INVISIBLE);
-        thirdCheckButton.setVisibility(View.INVISIBLE);
-
-        secondInput.setVisibility(View.INVISIBLE);
-        thirdInput.setVisibility(View.INVISIBLE);
+        editText1.setEnabled(true);
+        buttonCheck1.setEnabled(true);
+        buttonCheck2.setVisibility(View.INVISIBLE);
+        buttonCheck3.setVisibility(View.INVISIBLE);
+        buttonNewGame.setVisibility(View.INVISIBLE);
     }
 }
